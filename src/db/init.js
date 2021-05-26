@@ -10,7 +10,7 @@ const initDb = {
             name TEXT,
             avatar TEXT,
             monthly_budget INT,
-            days_perweek INT,       
+            days_per_week INT,       
             hours_per_day INT,
             vacation_per_year INT,
             value_hour INT
@@ -28,16 +28,18 @@ const initDb = {
             name,
             avatar,
             monthly_budget,
-            days_perweek,
+            days_per_week,
             hours_per_day,
-            vacation_per_year
+            vacation_per_year,
+            value_hour
         ) VALUES (
             "Frederico",
             "https://avatars.githubusercontent.com/u/83486018?v=4",
             3000,
             5,
             5,
-            4
+            4,
+            60
         );`)
 
         await db.run(`INSERT INTO jobs(
