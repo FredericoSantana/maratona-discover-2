@@ -8,16 +8,10 @@ module.exports = {
         return res.render("job")
     },
 
-    save(req, res) {
-        const jobs = Job.get()
-
-        //informa quantos elementos tem dentro do array
-        const lastId = jobs[jobs.length - 1]?.id || 0;
-
+    async save(req, res) {
         //pega os dados do formulário e empurra para a const jobs
-        Job.create(
+        await Job.create(
             {
-                id: lastId + 1,
                 name: req.body.name,
                 "daily-hours": req.body["daily-hours"],
                 "total-hours": req.body["total-hours"],
@@ -29,10 +23,10 @@ module.exports = {
         return res.redirect('/')
     },
 
-    show(req, res) {
+    async show(req, res) {
 
         const jobId = req.params.id
-        const jobs = Job.get()
+        const jobs = await Job.get()
 
         //busca dentro do array
         const job = jobs.find(job => Number(job.id) === Number(jobId))
@@ -40,16 +34,16 @@ module.exports = {
             return res.send('Job not found!')
         }
 
-        const profile = Profile.get()
+        const profile = await Profile.get()
 
         job.budget = JobUtils.calculateBudget(job, profile["value-hour"])
 
         return res.render("job-edit", { job })
     },
 
-    update(req, res) {
+    async update(req, res) {
         const jobId = req.params.id
-        const jobs = Job.get()
+        const jobs = await Job.get()
 
         const job = jobs.find(job => Number(job.id) === Number(jobId))
         if (!job) {
