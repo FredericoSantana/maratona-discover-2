@@ -5,7 +5,7 @@ const initDb = {
 
         const db = await Database()
 
-        await db.exec(`CREATE TABLE profile(
+        await db.exec(`CREATE TABLE profile (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             avatar TEXT,
@@ -16,7 +16,7 @@ const initDb = {
             value_hour INT
         )`);
 
-        await db.exec(`CREATE TABLE jobs(
+        await db.exec(`CREATE TABLE jobs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
             daily_hours INT,
@@ -24,7 +24,7 @@ const initDb = {
             created_at DATETIME
         )`)
 
-        await db.run(`INSERT INTO profile(
+        await db.run(`INSERT INTO profile (
             name,
             avatar,
             monthly_budget,
@@ -42,7 +42,7 @@ const initDb = {
             60
         );`)
 
-        await db.run(`INSERT INTO jobs(
+        await db.run(`INSERT INTO jobs (
             name,
             daily_hours,
             total_hours,
@@ -54,7 +54,7 @@ const initDb = {
             1617514376018
         );`)
 
-        await db.run(`INSERT INTO jobs(
+        await db.run(`INSERT INTO jobs (
             name,
             daily_hours,
             total_hours,

@@ -18,7 +18,7 @@ module.exports = {
         const updatedJobs = jobs.map((job) => {
             //ajustes no job
             const remaining = JobUtils.remainingDays(job)
-            const status = remaining <= 0 ? 'done' : 'progress'
+            const status = remaining <= 0 ? 'done' : 'progress';
 
             // Somando a quantidade de status
             statusCount[status] += 1;

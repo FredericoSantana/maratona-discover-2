@@ -8,7 +8,7 @@ module.exports = {
 
         await db.close()
 
-        return{
+        return {
             name: data.name,
             avatar: data.avatar,
             "monthly-budget": data.monthly_budget,
